@@ -46,7 +46,7 @@ public class TestScript : MonoBehaviour {
         if (logToConsole) {
             Debug.LogError(counter.ToString() + " - CLICK");
         }
-        skipScrollUpdates = 1;
+        skipScrollUpdates = 1; // verticalNormalizedPosition is actually updated on next frame
         //loopScrollRect.up
         //needToScrollDown = true;
     }
