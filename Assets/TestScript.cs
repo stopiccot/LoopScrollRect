@@ -13,20 +13,31 @@ public class TestScript : MonoBehaviour {
 		
 	}
 
-    public bool needToScrollDown = true;
+    public static TestScript Instance;
+
+    public bool DisableAutoScroll = false;
+    private bool needToScrollDown = true;
     int counter = 0;
     int skipScrollUpdates = 0;
     public bool logToConsole = false;
 
+	private void Awake() {
+        Instance = this;
+	}
+
 	// Update is called once per frame
 	void Update () {
+        if (DisableAutoScroll) {
+            needToScrollDown = false;
+        }
+
         if (needToScrollDown) {
             if (skipScrollUpdates == 0) {
-                if (loopScrollRect.verticalNormalizedPosition < 1) {
-                    //Debug.Log("-----------");
-                    //Debug.Log("loopScrollRect: " + loopScrollRect.verticalNormalizedPosition.ToString());
-                    loopScrollRect.verticalNormalizedPosition = 1 - (1 - loopScrollRect.verticalNormalizedPosition) * 0.75f;
-                    //Debug.Log("loopScrollRect: " + loopScrollRect.verticalNormalizedPosition.ToString());
+                if (1 - loopScrollRect.verticalNormalizedPosition > 0.001) {
+                    loopScrollRect.verticalNormalizedPosition = 1 - (1 - loopScrollRect.verticalNormalizedPosition) * 0.95f;
+                } else {
+                    loopScrollRect.verticalNormalizedPosition = 1;
+                    needToScrollDown = false;
                 }
             } else {
                 skipScrollUpdates--;
@@ -42,10 +53,13 @@ public class TestScript : MonoBehaviour {
 
     public void ButtonClick() {
         loopScrollRect.totalCount = loopScrollRect.totalCount + 1;
+        loopScrollRect.DeleteItemAtEnd();
+        loopScrollRect.NewItemAtEnd();
         loopScrollRect.NewItemAtEnd();
         if (logToConsole) {
             Debug.LogError(counter.ToString() + " - CLICK");
         }
+        needToScrollDown = true;
         skipScrollUpdates = 1; // verticalNormalizedPosition is actually updated on next frame
         //loopScrollRect.up
         //needToScrollDown = true;

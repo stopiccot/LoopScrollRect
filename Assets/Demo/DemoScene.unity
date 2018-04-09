@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSource:
-    prefabName: ScrollCell1
+    prefabName: ScrollCell2
     poolSize: 5
   totalCount: 5
   reverseDirection: 0
@@ -2553,6 +2553,7 @@ MonoBehaviour:
   loopScrollRect: {fileID: 1320192877}
   vOffsetLabel: {fileID: 938856078}
   needToScrollDown: 1
+  logToConsole: 0
 --- !u!1 &2085172118
 GameObject:
   m_ObjectHideFlags: 0

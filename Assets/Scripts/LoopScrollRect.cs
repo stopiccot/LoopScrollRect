@@ -547,7 +547,7 @@ namespace UnityEngine.UI
             return size;
         }
 
-        protected float DeleteItemAtEnd()
+        public float DeleteItemAtEnd()
         {
             if (((m_Dragging || m_Velocity != Vector2.zero) && totalCount >= 0 && itemTypeStart < contentConstraintCount) 
                 || content.childCount == 0)
