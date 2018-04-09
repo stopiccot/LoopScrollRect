@@ -28,3 +28,6 @@ sysinfo.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Visual Studio cache directory
+/.vs/
