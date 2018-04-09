@@ -515,7 +515,7 @@ namespace UnityEngine.UI
         }
 
 
-        protected float NewItemAtEnd()
+        public float NewItemAtEnd()
         {
             if (totalCount >= 0 && itemTypeEnd >= totalCount)
             {
